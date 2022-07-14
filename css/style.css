@@ -77,7 +77,7 @@
 @keyframes nuvem-animation {
 
     from {
-        right: 0;
+        right: -500px;
     }
 
     to {

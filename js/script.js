@@ -23,7 +23,7 @@
             mario.style.animation = 'none';
             mario.style.bottom = `${marioPosition}px`;
 
-            mario.src = './images/game-over.png';
+            mario.src = './images/game-over.webp';
             mario.style.width = '75px';
             mario.style.marginLeft = '50px';
 
