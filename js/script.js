@@ -7,6 +7,7 @@
     const floor3 = document.querySelector('.floor-3');
     const audioStart = new Audio('./audio/theme.mp3');
     const audioGameOver = new Audio('./audio/gameover.mp3');
+    const pulo = new Audio('./audio/pulo.mp3');
 
 
 
@@ -21,6 +22,7 @@
 
         setTimeout(() => {
             mario.classList.remove('jump');
+            pulo.play();
         }, 500);
     }
 
@@ -33,7 +35,7 @@
         const floorPosition1 = floor1.offsetLeft;
         const floorPosition2 = floor2.offsetLeft;
         const floorPosition3 = floor3.offsetLeft;
-        
+
         
         function grassAnimation(){
             grass.classList.add('grass-animation');
