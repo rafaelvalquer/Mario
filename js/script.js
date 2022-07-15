@@ -1,7 +1,7 @@
     const mario = document.querySelector('.mario');
     const pipe = document.querySelector('.pipe');
     const p$ = document.getElementById('contador');
-    const audioStart = new Audio('./audio/theme.mp3')
+    const audioStart = new Audio('./audio/theme.mp3');
     const audioGameOver = new Audio('./audio/gameover.mp3')
 
 
@@ -44,12 +44,6 @@
 
     
     document.addEventListener('keydown', jump)
-
-    
-    audioStart.play();
-    audioStart.loop =true;
-    audioStart.playbackRate = 2;
-
 
 
 
