@@ -1,5 +1,6 @@
     const mario = document.querySelector('.mario');
     const pipe = document.querySelector('.pipe');
+    const cogumelo = document.querySelector('.cogumelo');
     const grass = document.querySelector('.grass');
     const p$ = document.getElementById('contador');
     const floor1 = document.querySelector('.floor-1');
@@ -8,6 +9,9 @@
     const audioStart = new Audio('./audio/theme.mp3');
     const audioGameOver = new Audio('./audio/gameover.mp3');
     const pulo = new Audio('./audio/pulo.mp3');
+    const yoshi = new Audio('./audio/yoshi.mp3');
+   
+   
 
 
 
@@ -16,6 +20,8 @@
     let contador = 0;
 
     p$.innerHTML = contador;
+
+
 
     const jump = () => {
         mario.classList.add('jump');
@@ -27,9 +33,13 @@
     }
 
 
+
+
     const loop = setInterval(() => {
 
+        audioStart.play();
         const pipePosition = pipe.offsetLeft;
+        const cogumeloPosition = cogumelo.offsetLeft;
         const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '');
         const grassPosition = grass.offsetLeft;
         const floorPosition1 = floor1.offsetLeft;
@@ -57,8 +67,18 @@
                 }setInterval(floorAnimation3, 3100); 
 
 
-        audioStart.play();
-                
+
+        
+        if (cogumeloPosition <= 120 && marioPosition < 80 && cogumeloPosition > 0) {
+
+            cogumelo.style.animation = 'none';
+
+            mario.src = './images/yoshi.gif';
+            mario.style.width = '75px';
+            mario.style.marginLeft = '50px';
+            yoshi.play();
+        }
+
         if (pipePosition <= 120 && marioPosition < 80 && pipePosition > 0) {
 
             pipe.style.animation = 'none';
@@ -73,6 +93,9 @@
 
             grass.style.animation = 'none';
             grass.style.left = `${grassPosition}px`;
+
+            cogumelo.style.animation = 'none';
+            cogumelo.style.left = `${cogumeloPosition}px`;
 
             floor1.style.animation = 'none';
             floor1.style.left = `${floorPosition1}px`;
