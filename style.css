@@ -74,7 +74,7 @@ body{
 }
 
 .pipe-animation{
-    animation: grass-animation 1.5s infinite linear;
+    animation: pipe-animation 1.5s infinite linear;
 }
 
 @keyframes pipe-animation {
