@@ -87,6 +87,33 @@ body{
     
 }
 
+
+/*=============== Yoshi ===============*/
+
+/*Yoshi */
+.yoshi {
+    position: absolute;
+    bottom: 0;
+    width: 130px;
+    right: -200px;
+    padding-bottom: 34px;
+    z-index: 10;
+}
+
+.yoshi-animation{
+    animation: yoshi-animation 1.5s infinite linear;
+}
+
+@keyframes yoshi-animation {
+    from{
+        right: -200px;
+    }
+    to{
+        right: 100%;
+    }
+    
+}
+
 /*Grama */
 .grass {
     position: absolute;

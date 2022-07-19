@@ -1,13 +1,16 @@
 mario = document.querySelector('.mario');
+yoshi = document.querySelector('.yoshi');
 pipe = document.querySelector('.pipe');
 grass = document.querySelector('.grass');
 textStart = document.querySelector('text-start')
 audioStart = new Audio('./audio/theme.mp3')
 audioGameOver = new Audio('./audio/gameover.mp3')
+audioYoshi = new Audio('./audio/yoshi.mp3')
 floor1 = document.querySelector('.floor-1')
 floor2 = document.querySelector('.floor-2')
 floor3 = document.querySelector('.floor-3')
 
+var vida = 0;
 
 
 /*================ Função Start ===================*/ 
@@ -18,14 +21,17 @@ const start = () => {
 
     pipe.classList.add('pipe-animation');
 
-    mario.src = './images/mario.gif';
-    mario.style.width = '150px';
-    mario.style.marginLeft = '50px';
+        mario.src = './images/mario.gif';
+        mario.style.width = '150px';
+        mario.style.marginLeft = '50px';
+
+    function yoshiAnimation(){
+        yoshi.classList.add('yoshi-animation');
+        }setInterval(yoshiAnimation, 5000);
 
     function grassAnimation(){
         grass.classList.add('grass-animation');
             }setInterval(grassAnimation, 8000);
-
 
     function floorAnimation1(){
         floor1.classList.add('floor-animation-1');
@@ -47,46 +53,54 @@ document.addEventListener('keydown', start);
 
 
 
-
-
-
-
-
-
-
-
-
-
 /*================ Função Pulo ===================*/ 
 
 const jump = () => {
+    if (vida == 1) {
+        mario.src = './images/marioYoshi.gif';
+        mario.style.width = '140px';
+        mario.style.marginLeft = '50px';
+    } else{
+        mario.src = mario.src;
+    }
     mario.classList.add('jump');
 
     setTimeout(() => {
         mario.classList.remove('jump');
     }, 500); 
+
 }
 
 document.addEventListener('keydown', jump);
 
-
-
-
-
-
-
 /*================ Código para acabar o jogo ===================*/ 
+
+
 
 const checkGameOver = setInterval(() => {
     const pipePosition = pipe.offsetLeft;
     const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '');
+    const yoshiPosition = yoshi.offsetLeft;
     const grassPosition = grass.offsetLeft;
     const floorPosition1 = floor1.offsetLeft;
     const floorPosition2 = floor2.offsetLeft;
     const floorPosition3 = floor3.offsetLeft;
 
+    document.getElementById("text-start").style.color = "black";
+    document.getElementById("text-start").innerHTML="<strong>VIDA = </strong>" + vida;
+
+        if (yoshiPosition <= 120 && yoshiPosition > 0 && marioPosition < 80 ) {
+
+            yoshi.style.animation = 'none';
+            mario.src = './images/marioYoshi.gif';
+            mario.style.width = '140px';
+            mario.style.marginLeft = '50px';
+            audioYoshi.play();
+            vida = 1;
+        }
+
    
-        if (pipePosition <= 120 && pipePosition > 0 && marioPosition < 80 ) {
+         if (pipePosition <= 120 && pipePosition > 0 && marioPosition < 80 && vida == 0 ) {
 
             pipe.style.animation = 'none';
             pipe.style.left = `${pipePosition}px`;
@@ -125,6 +139,15 @@ const checkGameOver = setInterval(() => {
                 }setTimeout(stopAudio, 8000);
 
             clearInterval(checkGameOver);
-         }
+
+         } else if (pipePosition <= 120 && pipePosition > 0 && marioPosition < 80 && vida == 1) {
+
+            mario.src = './images/mario.gif';
+            mario.style.width = '150px';
+            mario.style.marginLeft = '50px';
+            function timeVida(){
+                vida = 0
+                    }setInterval(timeVida, 600);
+        }
 }, 10);
 
