@@ -31,7 +31,7 @@ const start = () => {
 
     function grassAnimation(){
         grass.classList.add('grass-animation');
-            }setInterval(grassAnimation, 8000);
+            }setInterval(grassAnimation, 6000);
 
     function floorAnimation1(){
         floor1.classList.add('floor-animation-1');
@@ -107,6 +107,8 @@ const checkGameOver = setInterval(() => {
 
             mario.style.animation = 'none';
             mario.style.bottom = `${marioPosition}px`;
+
+            yoshi.style.animation = 'none';
 
             mario.src = './images/game-over.png';
             mario.style.width = '75px';
