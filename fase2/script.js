@@ -227,12 +227,6 @@ const checkGameOver = setInterval(() => {
                 audioStart.pause();
                 }stopAudioStart();
 
-                const fase2 = () => {
-                    window.location = "./fase2/index.html"
-                }
-                
-                document.addEventListener('keydown', fase2);
-
             clearInterval(checkGameOver);
             }
         
