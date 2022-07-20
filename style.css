@@ -56,7 +56,54 @@ body{
     
 }
 
+/*=============== Mario_andando ===============*/
 
+.marioAndando {
+    width: 150px;
+    position: absolute;
+    bottom: 0;
+    margin-left: 50 px;
+    padding-bottom: 34px;
+    z-index: 10;
+}
+
+.marioAndando-animation{
+    animation: marioAndando-animation 3500ms forwards ease-out;
+}
+
+@keyframes marioAndando-animation {
+    from{
+        left: 100px;
+    }
+    to{
+        left: 70%;
+    }
+    
+}
+
+/*=============== Castelo ===============*/
+
+.castelo {
+    width: 150px;
+    position: absolute;
+    bottom: 0;
+    right: -80px;
+    padding-bottom: 34px;
+    z-index: 0;
+}
+
+.castelo-animation{
+    animation: castelo-animation 2000ms forwards ease-out;
+}
+
+@keyframes castelo-animation {
+    from{
+        right: -80px;
+    }
+    to{
+        right: 20%;
+    }
+}
 
 /*=============== Cenário ===============*/
 

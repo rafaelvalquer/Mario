@@ -1,4 +1,6 @@
 mario = document.querySelector('.mario');
+marioAndando = document.querySelector('.marioAndando');
+castelo = document.querySelector('.castelo');
 yoshi = document.querySelector('.yoshi');
 pipe = document.querySelector('.pipe');
 grass = document.querySelector('.grass');
@@ -8,6 +10,8 @@ audioStart = new Audio('./audio/theme.mp3')
 audioGameOver = new Audio('./audio/gameover.mp3')
 audioYoshi = new Audio('./audio/yoshi.mp3')
 audioJump = new Audio('./audio/jump.wav')
+audioCastelo = new Audio('./audio/castelo.mp3')
+audioPowerUp = new Audio('./audio/powerup.wav')
 floor1 = document.querySelector('.floor-1')
 floor2 = document.querySelector('.floor-2')
 floor3 = document.querySelector('.floor-3')
@@ -21,7 +25,7 @@ const start = () => {
 
     document.getElementById("text-start").style.color = "rgb(236, 236, 236)";
 
-    pipe.classList.add('pipe-animation');
+        pipe.classList.add('pipe-animation');
 
         mario.src = './images/mario.gif';
         mario.style.width = '150px';
@@ -91,6 +95,8 @@ const checkGameOver = setInterval(() => {
 
     document.getElementById("text-start").style.color = "black";
 
+
+    /* #### Função contador #### */
          function Contando(){
             if(pipePosition <= 20 && pipePosition > 0){
                 contador++;
@@ -107,6 +113,8 @@ const checkGameOver = setInterval(() => {
             }
                 }setTimeout(Contando, 100);
 
+    /* #### Função Pega Yoshi #### */    
+
         if (yoshiPosition <= 120 && yoshiPosition > 0 && marioPosition < 80 ) {
 
             yoshi.style.animation = 'none';
@@ -117,7 +125,8 @@ const checkGameOver = setInterval(() => {
             vida = 1;
         }
 
-   
+       /* #### Função morre sem vida #### */
+
          if (pipePosition <= 120 && pipePosition > 0 && marioPosition < 80 && vida == 0 ) {
 
             pipe.style.animation = 'none';
@@ -125,6 +134,7 @@ const checkGameOver = setInterval(() => {
 
             mario.style.animation = 'none';
             mario.style.bottom = `${marioPosition}px`;
+
 
             yoshi.style.animation = 'none';
 
@@ -160,6 +170,7 @@ const checkGameOver = setInterval(() => {
 
             clearInterval(checkGameOver);
 
+        /* #### Função morre com vida #### */
          } else if (pipePosition <= 120 && pipePosition > 0 && marioPosition < 80 && vida == 1) {
 
             mario.src = './images/mario.gif';
@@ -169,5 +180,55 @@ const checkGameOver = setInterval(() => {
                 vida = 0
                     }setInterval(timeVida, 600);
         }
+
+            /* #### Proxima fase #### */
+
+        if (contador == 2 && marioPosition == 0){
+
+            function proximafase(){
+                marioAndando.src = mario.src;
+                marioAndando.classList.add('marioAndando-animation');
+                document.querySelectorAll('.mario').forEach(e => e.remove());
+                castelo.src = './images/castelo.png';
+                castelo.classList.add('castelo-animation');
+                audioPowerUp.play();
+                }setTimeout(proximafase, 500);
+
+            function win(){
+                marioAndando.src = './images/win.gif';
+                marioAndando.style.bottom = "-40px";
+                audioCastelo.play();
+                }setInterval(win, 4000);
+         
+
+            document.querySelectorAll('.pipe').forEach(e => e.remove());
+
+
+            yoshi.style.animation = 'none';
+
+
+            grass.style.animation = 'none';
+            grass.style.left = `${grassPosition}px`;
+
+            floor1.style.animation = 'none';
+            floor1.style.left = `${floorPosition1}px`;
+
+            floor2.style.animation = 'none';
+            floor2.style.left = `${floorPosition2}px`;
+
+            floor3.style.animation = 'none';
+            floor3.style.left = `${floorPosition3}px`;
+
+            document.getElementById("text-start").style.color = "black";
+            document.getElementById("text-start").innerHTML="<strong>Proxima Fase</strong>";
+
+
+            function stopAudioStart(){
+                audioStart.pause();
+                }stopAudioStart();
+
+            clearInterval(checkGameOver);
+            }
+        
 }, 20);
 
