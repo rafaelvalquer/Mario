@@ -7,6 +7,7 @@ pontos = document.querySelector('pontos')
 audioStart = new Audio('./audio/theme.mp3')
 audioGameOver = new Audio('./audio/gameover.mp3')
 audioYoshi = new Audio('./audio/yoshi.mp3')
+audioJump = new Audio('./audio/jump.mp3')
 floor1 = document.querySelector('.floor-1')
 floor2 = document.querySelector('.floor-2')
 floor3 = document.querySelector('.floor-3')
@@ -65,6 +66,7 @@ const jump = () => {
     } else{
         mario.src = mario.src;
     }
+    audioJump.play();
     mario.classList.add('jump');
 
     setTimeout(() => {
