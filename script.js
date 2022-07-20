@@ -3,6 +3,7 @@ yoshi = document.querySelector('.yoshi');
 pipe = document.querySelector('.pipe');
 grass = document.querySelector('.grass');
 textStart = document.querySelector('text-start')
+pontos = document.querySelector('pontos')
 audioStart = new Audio('./audio/theme.mp3')
 audioGameOver = new Audio('./audio/gameover.mp3')
 audioYoshi = new Audio('./audio/yoshi.mp3')
@@ -11,7 +12,7 @@ floor2 = document.querySelector('.floor-2')
 floor3 = document.querySelector('.floor-3')
 
 var vida = 0;
-
+var contador = 0;
 
 /*================ Função Start ===================*/ 
 
@@ -56,6 +57,7 @@ document.addEventListener('keydown', start);
 /*================ Função Pulo ===================*/ 
 
 const jump = () => {
+    document.getElementById("text-start").innerHTML="<strong>VIDA = </strong>" + vida;
     if (vida == 1) {
         mario.src = './images/marioYoshi.gif';
         mario.style.width = '140px';
@@ -68,7 +70,6 @@ const jump = () => {
     setTimeout(() => {
         mario.classList.remove('jump');
     }, 500); 
-
 }
 
 document.addEventListener('keydown', jump);
@@ -87,7 +88,22 @@ const checkGameOver = setInterval(() => {
     const floorPosition3 = floor3.offsetLeft;
 
     document.getElementById("text-start").style.color = "black";
-    document.getElementById("text-start").innerHTML="<strong>VIDA = </strong>" + vida;
+
+         function Contando(){
+            if(pipePosition <= 20 && pipePosition > 0){
+                contador++;
+                console.log (contador);
+                console.log(pipePosition);
+
+                if (contador <= 1){
+                document.getElementById("pontos").style.color = "black";
+                document.getElementById("pontos").innerHTML= contador + "<strong> PONTO</strong>";""
+            } else {
+                document.getElementById("pontos").style.color = "black";
+                document.getElementById("pontos").innerHTML= contador + "<strong> PONTOS</strong>";
+            }
+            }
+                }setTimeout(Contando, 100);
 
         if (yoshiPosition <= 120 && yoshiPosition > 0 && marioPosition < 80 ) {
 
@@ -151,5 +167,5 @@ const checkGameOver = setInterval(() => {
                 vida = 0
                     }setInterval(timeVida, 600);
         }
-}, 10);
+}, 20);
 
