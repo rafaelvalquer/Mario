@@ -70,7 +70,7 @@ const start = () => {
                             
     function fundoCasteloAnimation3(){
         fundoCastelo3.classList.add('fundoCastelo-animation-3');
-            }setInterval(fundoCasteloAnimation3, 3100); 
+            }setInterval(fundoCasteloAnimation3, 0); 
             
     audioStart.play();
 }
@@ -203,7 +203,7 @@ const checkGameOver = setInterval(() => {
 
             /* #### Proxima fase #### */
 
-        if (contador == 2 && marioPosition == 0){
+        if (contador == 10 && marioPosition == 0){
 
             function proximafase(){
                 marioAndando.src = mario.src;
