@@ -16,6 +16,12 @@ floor1 = document.querySelector('.floor-1')
 floor2 = document.querySelector('.floor-2')
 floor3 = document.querySelector('.floor-3')
 
+
+fundoCastelo1 = document.querySelector('.fundoCastelo-1');
+fundoCastelo2 = document.querySelector('.fundoCastelo-2');
+fundoCastelo3 = document.querySelector('.fundoCastelo-3');
+
+
 var vida = 0;
 var contador = 0;
 
@@ -51,6 +57,20 @@ const start = () => {
         floor3.classList.add('floor-animation-3');
             }setInterval(floorAnimation3, 3100); 
      
+
+
+
+    function fundoCasteloAnimation1(){
+        fundoCastelo1.classList.add('fundoCastelo-animation-1');
+            }setInterval(fundoCasteloAnimation1, 0);
+
+    function fundoCasteloAnimation2(){
+        fundoCastelo2.classList.add('fundoCastelo-animation-2');
+            }setInterval(fundoCasteloAnimation2, 0);
+                            
+    function fundoCasteloAnimation3(){
+        fundoCastelo3.classList.add('fundoCastelo-animation-3');
+            }setInterval(fundoCasteloAnimation3, 3100); 
             
     audioStart.play();
 }
