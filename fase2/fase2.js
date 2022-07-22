@@ -2,7 +2,7 @@ mario = document.querySelector('.mario');
 marioAndando = document.querySelector('.marioAndando');
 castelo = document.querySelector('.castelo');
 yoshi = document.querySelector('.yoshi');
-pipe = document.querySelector('.pipe');
+morcego = document.querySelector('.morcego');
 grass = document.querySelector('.grass');
 textStart = document.querySelector('text-start')
 pontos = document.querySelector('pontos')
@@ -15,8 +15,6 @@ audioPowerUp = new Audio('./audio/powerup.wav')
 floor1 = document.querySelector('.floor-1')
 floor2 = document.querySelector('.floor-2')
 floor3 = document.querySelector('.floor-3')
-
-
 fundoCastelo1 = document.querySelector('.fundoCastelo-1');
 fundoCastelo2 = document.querySelector('.fundoCastelo-2');
 fundoCastelo3 = document.querySelector('.fundoCastelo-3');
@@ -31,7 +29,7 @@ const start = () => {
 
     document.getElementById("text-start").style.color = "rgb(236, 236, 236)";
 
-        pipe.classList.add('pipe-animation');
+        morcego.classList.add('morcego-animation');
 
         mario.src = './images/mario.gif';
         mario.style.width = '150px';
@@ -69,7 +67,7 @@ const start = () => {
         fundoCastelo3.classList.add('fundoCastelo-animation-3');
             }setInterval(fundoCasteloAnimation3, 0); 
             
-    audioStart.play();
+        audioCastelo.play();
 }
 
 document.addEventListener('keydown', start);
@@ -102,7 +100,7 @@ document.addEventListener('keydown', jump);
 
 
 const checkGameOver = setInterval(() => {
-    const pipePosition = pipe.offsetLeft;
+    const morcegoPosition = morcego.offsetLeft;
     const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '');
     const yoshiPosition = yoshi.offsetLeft;
     const grassPosition = grass.offsetLeft;
@@ -118,10 +116,11 @@ const checkGameOver = setInterval(() => {
 
     /* #### Função contador #### */
          function Contando(){
-            if(pipePosition <= 20 && pipePosition > 0){
+            if(morcegoPosition <= 10 && morcegoPosition > 0){
+                console.log(morcegoPosition);
                 contador++;
                 console.log (contador);
-                console.log(pipePosition);
+                console.log(morcegoPosition);
 
                 if (contador <= 1){
                 document.getElementById("pontos").style.color = "black";
@@ -147,10 +146,10 @@ const checkGameOver = setInterval(() => {
 
        /* #### Função morre sem vida #### */
 
-         if (pipePosition <= 120 && pipePosition > 0 && marioPosition < 80 && vida == 0 ) {
+         if (morcegoPosition <= 120 && morcegoPosition > 0 && marioPosition < 80 && vida == 0 ) {
 
-            pipe.style.animation = 'none';
-            pipe.style.left = `${pipePosition}px`;
+            morcego.style.animation = 'none';
+            morcego.style.left = `${morcegoPosition}px`;
 
             mario.style.animation = 'none';
             mario.style.bottom = `${marioPosition}px`;
@@ -200,7 +199,7 @@ const checkGameOver = setInterval(() => {
             clearInterval(checkGameOver);
 
         /* #### Função morre com vida #### */
-         } else if (pipePosition <= 120 && pipePosition > 0 && marioPosition < 80 && vida == 1) {
+         } else if (morcegoPosition <= 120 && morcegoPosition > 0 && marioPosition < 80 && vida == 1) {
 
             mario.src = './images/mario.gif';
             mario.style.width = '150px';
@@ -212,7 +211,7 @@ const checkGameOver = setInterval(() => {
 
             /* #### Proxima fase #### */
 
-        if (contador == 10 && marioPosition == 0){
+        if (contador == 20 && marioPosition == 0){
 
             function proximafase(){
                 marioAndando.src = mario.src;
@@ -230,7 +229,7 @@ const checkGameOver = setInterval(() => {
                 }setInterval(win, 4000);
          
 
-            document.querySelectorAll('.pipe').forEach(e => e.remove());
+            document.querySelectorAll('.morcego').forEach(e => e.remove());
 
 
             yoshi.style.animation = 'none';

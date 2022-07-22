@@ -32,7 +32,7 @@ body{
 } 
 
 .fundoCastelo-animation-1{
-    animation: fundoCastelo-animation-1 5s linear;
+    animation: fundoCastelo-animation-1 5s infinite linear ;
 }
 
 @keyframes fundoCastelo-animation-1 {
@@ -173,7 +173,7 @@ body{
 /*=============== Cenário ===============*/
 
 /*Tubulação */
-.pipe {
+.morcego {
     position: absolute;
     bottom: 0;
     width: 120px;
@@ -182,11 +182,11 @@ body{
     z-index: 10;
 }
 
-.pipe-animation{
-    animation: pipe-animation 2s infinite linear;
+.morcego-animation{
+    animation: morcego-animation 2s infinite linear;
 }
 
-@keyframes pipe-animation {
+@keyframes morcego-animation {
     from{
         right: -100px;
     }
@@ -391,7 +391,7 @@ body{
 
 p {
     font-family:'Roboto Mono', monospace;
-    padding: 50px;
+    padding: 10px;
     text-align: center;
     color: black;
 }
