@@ -176,23 +176,40 @@ body{
 .pipe {
     position: absolute;
     bottom: 0;
-    width: 80px;
-    right: -80px;
+    width: 120px;
+    right: -100px;
     padding-bottom: 34px;
     z-index: 10;
 }
 
 .pipe-animation{
-    animation: pipe-animation 1.5s infinite linear;
+    animation: pipe-animation 2s infinite linear;
 }
 
 @keyframes pipe-animation {
     from{
-        right: -80px;
+        right: -100px;
     }
     to{
         right: 100%;
     }
+
+    0%{
+        bottom: 180px;
+    }
+    25%{
+        bottom: 0px
+    }
+    50%{
+        bottom: 180px;
+    }
+    75%{
+        bottom:0px;
+    }
+    100%{
+        bottom:0px;
+    }
+    
     
 }
 
@@ -210,7 +227,7 @@ body{
 }
 
 .yoshi-animation{
-    animation: yoshi-animation 1.5s infinite linear;
+    animation: yoshi-animation 2s infinite linear;
 }
 
 @keyframes yoshi-animation {

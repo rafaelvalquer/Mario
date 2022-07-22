@@ -56,9 +56,6 @@ const start = () => {
     function floorAnimation3(){
         floor3.classList.add('floor-animation-3');
             }setInterval(floorAnimation3, 3100); 
-     
-
-
 
     function fundoCasteloAnimation1(){
         fundoCastelo1.classList.add('fundoCastelo-animation-1');
@@ -112,6 +109,9 @@ const checkGameOver = setInterval(() => {
     const floorPosition1 = floor1.offsetLeft;
     const floorPosition2 = floor2.offsetLeft;
     const floorPosition3 = floor3.offsetLeft;
+    const fundoCasteloPosition1 = fundoCastelo1.offsetLeft;
+    const fundoCasteloPosition2 = fundoCastelo2.offsetLeft;
+    const fundoCasteloPosition3 = fundoCastelo3.offsetLeft;
 
     document.getElementById("text-start").style.color = "black";
 
@@ -173,6 +173,15 @@ const checkGameOver = setInterval(() => {
 
             floor3.style.animation = 'none';
             floor3.style.left = `${floorPosition3}px`;
+
+            fundoCastelo1.style.animation = 'none';
+            fundoCastelo1.style.left = `${fundoCasteloPosition1}px`;
+
+            fundoCastelo2.style.animation = 'none';
+            fundoCastelo2.style.left = `${fundoCasteloPosition2}px`;
+
+            fundoCastelo3.style.animation = 'none';
+            fundoCastelo3.style.left = `${fundoCasteloPosition3}px`;
 
             document.getElementById("text-start").style.color = "black";
             document.getElementById("text-start").innerHTML="<strong>GAME OVER</strong>";
