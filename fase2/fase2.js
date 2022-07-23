@@ -3,7 +3,6 @@ marioAndando = document.querySelector('.marioAndando');
 castelo = document.querySelector('.castelo');
 yoshi = document.querySelector('.yoshi');
 morcego = document.querySelector('.morcego');
-grass = document.querySelector('.grass');
 textStart = document.querySelector('text-start')
 pontos = document.querySelector('pontos')
 audioStart = new Audio('./audio/theme.mp3')
@@ -18,6 +17,7 @@ floor3 = document.querySelector('.floor-3')
 fundoCastelo1 = document.querySelector('.fundoCastelo-1');
 fundoCastelo2 = document.querySelector('.fundoCastelo-2');
 fundoCastelo3 = document.querySelector('.fundoCastelo-3');
+fundoCastelo4 = document.querySelector('.fundoCastelo-4');
 
 
 var vida = 0;
@@ -38,10 +38,6 @@ const start = () => {
     function yoshiAnimation(){
         yoshi.classList.add('yoshi-animation');
         }setInterval(yoshiAnimation, 5000);
-
-    function grassAnimation(){
-        grass.classList.add('grass-animation');
-            }setInterval(grassAnimation, 6000);
 
     function floorAnimation1(){
         floor1.classList.add('floor-animation-1');
@@ -66,6 +62,10 @@ const start = () => {
     function fundoCasteloAnimation3(){
         fundoCastelo3.classList.add('fundoCastelo-animation-3');
             }setInterval(fundoCasteloAnimation3, 0); 
+
+    function fundoCasteloAnimation4(){
+        fundoCastelo4.classList.add('fundoCastelo-animation-4');
+            }setInterval(fundoCasteloAnimation4, 5000); 
             
         audioCastelo.play();
 }
@@ -103,13 +103,13 @@ const checkGameOver = setInterval(() => {
     const morcegoPosition = morcego.offsetLeft;
     const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '');
     const yoshiPosition = yoshi.offsetLeft;
-    const grassPosition = grass.offsetLeft;
     const floorPosition1 = floor1.offsetLeft;
     const floorPosition2 = floor2.offsetLeft;
     const floorPosition3 = floor3.offsetLeft;
     const fundoCasteloPosition1 = fundoCastelo1.offsetLeft;
     const fundoCasteloPosition2 = fundoCastelo2.offsetLeft;
     const fundoCasteloPosition3 = fundoCastelo3.offsetLeft;
+    const fundoCasteloPosition4 = fundoCastelo4.offsetLeft;
 
     document.getElementById("text-start").style.color = "black";
 
@@ -161,9 +161,6 @@ const checkGameOver = setInterval(() => {
             mario.style.width = '75px';
             mario.style.marginLeft = '50px';
 
-            grass.style.animation = 'none';
-            grass.style.left = `${grassPosition}px`;
-
             floor1.style.animation = 'none';
             floor1.style.left = `${floorPosition1}px`;
 
@@ -211,13 +208,13 @@ const checkGameOver = setInterval(() => {
 
             /* #### Proxima fase #### */
 
-        if (contador == 20 && marioPosition == 0){
+        if (contador == 1 && marioPosition == 0){
 
             function proximafase(){
                 marioAndando.src = mario.src;
                 marioAndando.classList.add('marioAndando-animation');
                 document.querySelectorAll('.mario').forEach(e => e.remove());
-                castelo.src = './images/castelo.png';
+                castelo.src = './images/porta.png';
                 castelo.classList.add('castelo-animation');
                 audioPowerUp.play();
                 }setTimeout(proximafase, 500);
@@ -234,10 +231,6 @@ const checkGameOver = setInterval(() => {
 
             yoshi.style.animation = 'none';
 
-
-            grass.style.animation = 'none';
-            grass.style.left = `${grassPosition}px`;
-
             floor1.style.animation = 'none';
             floor1.style.left = `${floorPosition1}px`;
 
@@ -246,6 +239,18 @@ const checkGameOver = setInterval(() => {
 
             floor3.style.animation = 'none';
             floor3.style.left = `${floorPosition3}px`;
+
+            fundoCastelo1.style.animation = 'none';
+            fundoCastelo1.style.left = `${fundoCasteloPosition1}px`;
+
+            fundoCastelo2.style.animation = 'none';
+            fundoCastelo2.style.left = `${fundoCasteloPosition2}px`;
+
+            fundoCastelo3.style.animation = 'none';
+            fundoCastelo3.style.left = `${fundoCasteloPosition3}px`;
+
+            fundoCastelo4.style.animation = 'none';
+            fundoCastelo4.style.left = `${fundoCasteloPosition4}px`;
 
             document.getElementById("text-start").style.color = "black";
             document.getElementById("text-start").innerHTML="<strong>Proxima Fase</strong>";

@@ -27,7 +27,7 @@ body{
     position: absolute;  
     width: 100%;
     height: 94%;
-    z-index: 9;
+    z-index: 2;
 
 } 
 
@@ -49,7 +49,7 @@ body{
     position: absolute;  
     width: 100%;
     height: 94%;
-    z-index: 9;
+    z-index: 2;
     right: -100%;
 
 } 
@@ -68,11 +68,11 @@ body{
     
 }
 
-.fundoCastelo-3 {
+ .fundoCastelo-3 {
     position: absolute;  
     width: 100%;
     height: 94%;
-    z-index: 9;
+    z-index: 2;
     right: -200%;
 } 
 
@@ -87,8 +87,28 @@ body{
     to{
         right: 100%;
     }
+} 
+
+.fundoCastelo-4 {
+    position: absolute;
+    width: 100%;
+    height: 94%;
+    z-index: 2;
+    right: -300%;
+} 
+
+.fundoCastelo-animation-4{
+    animation: fundoCastelo-animation-4 10s infinite linear;
 }
 
+@keyframes fundoCastelo-animation-4 {
+    from{
+        right: -100%;
+    }
+    to{
+        right: 100%;
+    }
+} 
 
 /*=============== Mario ===============*/
 
@@ -154,7 +174,7 @@ body{
     bottom: 0;
     right: -80px;
     padding-bottom: 34px;
-    z-index: 0;
+    z-index: 9;
 }
 
 .castelo-animation{
@@ -240,29 +260,6 @@ body{
     
 }
 
-/*Grama */
-.grass {
-    position: absolute;
-    bottom: 0;
-    width: 160px;
-    right: -160px;
-    padding-bottom: 34px;
-}
-
-.grass-animation{
-    animation: grass-animation 3s infinite linear;
-}
-
-@keyframes grass-animation {
-    from{
-        right: -80px;
-    }
-    to{
-        right: 100%;
-    }
-    
-}
-
 
 /*Piso*/
 .floor {
@@ -333,61 +330,6 @@ body{
         right: 100%;    
     }
 }
-
-
-
-
-/*Nuvens*/
-.clouds-1 {
-    position: absolute;
-    width: 550px;
-    padding-top: 50px;
-    z-index: 4;
-    animation: clouds-animation-1 40s infinite linear;
-}
-.clouds-2 {
-    position: absolute;
-    width: 270px;
-    padding-top: 150px;
-    z-index: 3;
-    animation: clouds-animation-2 50s infinite linear;
-}
-.clouds-3 {
-    position: absolute;
-    width: 150px;
-    padding-top: 300px;
-    z-index: 2;
-    animation: clouds-animation-3 75s infinite linear;
-}
-
-
-@keyframes clouds-animation-1 {
-    from{
-        right: -550px;
-    }
-    to{
-        right: 100%;
-    }
-}
-
-@keyframes clouds-animation-2 {
-    from{
-        right: -1300px;
-    }
-    to{
-        right: 100%;
-    }
-}
-
-@keyframes clouds-animation-3 {
-    from{
-        right: -250px;
-    }
-    to{
-        right: 100%;
-    }
-}
-
 
 p {
     font-family:'Roboto Mono', monospace;
